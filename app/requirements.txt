@@ -1,0 +1,6 @@
+confluent-kafka
+opentelemetry-api
+opentelemetry-sdk
+opentelemetry-distro
+opentelemetry-exporter-otlp-proto-http
+opentelemetry-instrumentation-confluent-kafka
