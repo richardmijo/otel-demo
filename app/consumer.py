@@ -74,28 +74,28 @@ def main():
                         mensaje.offset(),
                     )
 
-                    #with tracer.start_as_current_span("preparar-email"):
-                    #    print("Preparando correo...")
-                    #    time.sleep(0.10)
+                    with tracer.start_as_current_span("preparar-email"):
+                        print("Preparando correo...")
+                        time.sleep(0.10)
 
-                    with tracer.start_as_current_span("enviar-email"):
-                        print("Enviando correo...")
-                        time.sleep(2)
-                    with tracer.start_as_current_span("enviar-email") as span_email:
-                        try:
-                            time.sleep(0.20)
-                            raise RuntimeError("Servidor SMTP no disponible")
+                    #with tracer.start_as_current_span("enviar-email"):
+                    #    print("Enviando correo...")
+                    #    time.sleep(2)
+                    #with tracer.start_as_current_span("enviar-email") as span_email:
+                    #    try:
+                    #        time.sleep(0.20)
+                    #        raise RuntimeError("Servidor SMTP no disponible")
 
-                        except Exception as error:
-                            span_email.record_exception(error)
-                            span_email.set_status(
-                                Status(
-                                    StatusCode.ERROR,
-                                    str(error),
-                                )
-                            )
+                    #    except Exception as error:
+                    #        span_email.record_exception(error)
+                    #        span_email.set_status(
+                    #            Status(
+                    #                StatusCode.ERROR,
+                    #                str(error),
+                    #            )
+                    #        )
 
-                            print(f"Error enviando correo: {error}")
+                    #        print(f"Error enviando correo: {error}")
 
                     with tracer.start_as_current_span("registrar-notificacion"):
                         print("Registrando notificación...")
